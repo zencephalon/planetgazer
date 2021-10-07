@@ -24,8 +24,8 @@ const ValidatingInput: React.FC<Props> = ({
   const [_value, _setValue] = React.useState(value);
 
   React.useEffect(() => {
-    _setValue(value);
-  }, [value]);
+    _setValue(format(value));
+  }, [value, format]);
   // Maybe we shouldn't assume the input has a valid value to start with?
   const [isError, setIsError] = React.useState(false);
 
@@ -54,10 +54,7 @@ const ValidatingInput: React.FC<Props> = ({
       return;
     }
 
-    const formatted = format(parsed);
-
     setValue(parsed);
-    _setValue(formatted);
   }, [parse, format, _value, setValue, _setValue]);
 
   return children({ value: _value, isError, onChange, onBlur });

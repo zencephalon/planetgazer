@@ -9,11 +9,11 @@ import ValidatingInput from "~/c/ValidatingInput";
   */
 
 const JsonEditor: React.FC<Props> = () => {
-  const [json, setJson] = React.useState("");
+  const [json, setJson] = React.useState(null);
 
   return (
     <div>
-      <code>{json}</code>
+      <code>{JSON.stringify(json, null, 2)}</code>
       <ValidatingInput
         value={json}
         setValue={setJson}

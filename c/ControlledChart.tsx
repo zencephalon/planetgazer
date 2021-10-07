@@ -1,6 +1,7 @@
 import React from "react";
 import Chart from "~/c/Chart";
 import DateInput from "~/c/DateInput";
+// import JsonEditor from "~/c/JsonEditor";
 
 import { DateTime } from "luxon";
 
@@ -9,6 +10,7 @@ const ControlledChart: React.FC = () => {
 
   return (
     <>
+      {/*<JsonEditor />*/}
       <DateInput dt={dt} setDt={setDt} />
       <Chart dt={dt} />
     </>
