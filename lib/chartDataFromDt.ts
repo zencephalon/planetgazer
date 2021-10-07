@@ -26,6 +26,8 @@ export default function chartDataFromDt(dt: DateTime) {
     })
   );
 
+  delete chartPlanets.Sirius;
+
   const asc = horoscope.Ascendant.ChartPosition.Horizon.DecimalDegrees;
   const desc = (asc + 180) % 360;
   const mc = horoscope.Midheaven.ChartPosition.Horizon.DecimalDegrees;
