@@ -670,6 +670,13 @@ chokidar@3.5.1:
   optionalDependencies:
     fsevents "~2.3.1"
 
+chrono-node@^2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/chrono-node/-/chrono-node-2.3.2.tgz#794f2ada1f75fe3da216501031812c0f3dd23c71"
+  integrity sha512-uZkVtF8dJ7llRzk3zrjGjV524I6NvojqMYk30tIfnUQ8ODrL8wvi/E2iEOTfcyiJaLf0dGDu9XVqNkVFNDMPCA==
+  dependencies:
+    dayjs "^1.10.0"
+
 cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/cipher-base/-/cipher-base-1.0.4.tgz#8760e4ecc272f4c363532f926d874aae2c1397de"
@@ -848,6 +855,11 @@ data-uri-to-buffer@3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/data-uri-to-buffer/-/data-uri-to-buffer-3.0.1.tgz#594b8973938c5bc2c33046535785341abc4f3636"
   integrity sha512-WboRycPNsVw3B3TL559F7kuBUM4d8CgMEvk6xEJlOp7OBPjt6G7z8WMWlD2rOFZLk6OYfFIUGsCOWzcQH9K2og==
+
+dayjs@^1.10.0:
+  version "1.10.7"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.7.tgz#2cf5f91add28116748440866a0a1d26f3a6ce468"
+  integrity sha512-P6twpd70BcPK34K26uJ1KT3wlhpuOAPoMwJzpsIWUxHZ7wpmbdZL/hQqBDfz7hGurYSa5PhzdhDHtt319hL3ig==
 
 debug@2, debug@^2.6.9:
   version "2.6.9"

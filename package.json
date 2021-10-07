@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "chrono-node": "^2.3.2",
     "circular-natal-horoscope-js": "^1.1.0",
     "luxon": "^2.0.2",
     "next": "11.1.2",

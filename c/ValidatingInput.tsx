@@ -32,6 +32,7 @@ const ValidatingInput: React.FC<Props> = ({
 
       try {
         parse(val);
+        setIsError(false);
       } catch (e) {
         setIsError(true);
       }
@@ -52,7 +53,7 @@ const ValidatingInput: React.FC<Props> = ({
 
     const formatted = format(parsed);
 
-    setValue(formatted);
+    setValue(parsed);
     _setValue(formatted);
   }, [parse, format, _value, setValue, _setValue]);
 
