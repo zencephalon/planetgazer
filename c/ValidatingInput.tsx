@@ -22,6 +22,10 @@ const ValidatingInput: React.FC<Props> = ({
   children,
 }) => {
   const [_value, _setValue] = React.useState(value);
+
+  React.useEffect(() => {
+    _setValue(value);
+  }, [value]);
   // Maybe we shouldn't assume the input has a valid value to start with?
   const [isError, setIsError] = React.useState(false);
 
@@ -41,7 +45,6 @@ const ValidatingInput: React.FC<Props> = ({
   );
 
   const onBlur = React.useCallback(() => {
-    console.log("On blur");
     let parsed;
     try {
       parsed = parse(_value);

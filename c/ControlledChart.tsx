@@ -10,13 +10,6 @@ const ControlledChart: React.FC = () => {
   return (
     <>
       <DateInput dt={dt} setDt={setDt} />
-      <button
-        onClick={() => {
-          setDt(dt.plus({ week: 1 }));
-        }}
-      >
-        Press me
-      </button>
       <Chart dt={dt} />
     </>
   );
