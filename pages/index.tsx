@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 
-import Chart from "~/c/chart";
+import Chart from "~/c/ControlledChart";
 
 const Home: NextPage = () => {
   return (

@@ -2,11 +2,10 @@ import React from "react";
 import chartDataFromDt from "~/lib/chartDataFromDt";
 import { DateTime } from "luxon";
 
-const CChart: React.FC = (props) => {
+const CChart: React.FC = ({ dt }) => {
   React.useEffect(() => {
-    const dt = DateTime.now();
     chartDataFromDt(dt);
-  });
+  }, [dt]);
 
   return (
     <div>
