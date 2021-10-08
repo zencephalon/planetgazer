@@ -16,7 +16,7 @@ const DateInput: React.FC = ({ dt, setDt }) => {
       <button onClick={() => setDt(dt.minus({ day: 1 }))}>Day</button>
       <button onClick={() => setDt(dt.minus({ hour: 1 }))}>Hour</button>
       <ValidatingInput
-        value={dt.toJSDate().toLocaleString()}
+        value={dt}
         setValue={(date) => {
           const dt = DateTime.fromJSDate(date);
           setDt(dt);
@@ -24,7 +24,10 @@ const DateInput: React.FC = ({ dt, setDt }) => {
         parse={(val) => {
           return chrono.parseDate(val);
         }}
-        format={(val) => val.toLocaleString()}
+        format={(val) => {
+          console.log(DateTime.DATETIME_MED);
+          return val.toLocaleString(DateTime.DATETIME_MED);
+        }}
       >
         {({ value, isError, onChange, onBlur }) => (
           <input value={value} onChange={onChange} onBlur={onBlur} />
