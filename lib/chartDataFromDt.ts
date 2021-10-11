@@ -45,7 +45,7 @@ export default function chartDataFromDt(dt: DateTime) {
     cusps: chartCusps,
   };
 
-  const chart = new Astro.Chart("chart", 800, 800);
+  const chart = new Astro.Chart("chart", 800, 800, { COLORS_SIGNS_FILL: [] });
   const radix = chart.radix(data);
   radix.addPointsOfInterest({ As: [asc], Mc: [mc], Ds: [desc], Ic: [ic] });
   radix.aspects();
