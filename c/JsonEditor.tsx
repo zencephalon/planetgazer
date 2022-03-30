@@ -8,7 +8,7 @@ import ValidatingInput from "~/c/ValidatingInput";
 >{
   */
 
-const JsonEditor: React.FC<Props> = () => {
+const JsonEditor: React.FC = () => {
   const [json, setJson] = React.useState(null);
 
   return (
@@ -18,9 +18,19 @@ const JsonEditor: React.FC<Props> = () => {
         value={json}
         setValue={setJson}
         parse={JSON.parse}
-        format={(j) => JSON.stringify(j, null, 2)}
+        format={(j: any) => JSON.stringify(j, null, 2)}
       >
-        {({ value, isError, onChange, onBlur }) => {
+        {({
+          value,
+          isError,
+          onChange,
+          onBlur,
+        }: {
+          value: string;
+          isError: boolean;
+          onChange: React.ChangeEventHandler<HTMLTextAreaElement>;
+          onBlur: React.ChangeEventHandler<HTMLTextAreaElement>;
+        }) => {
           return <textarea value={value} onChange={onChange} onBlur={onBlur} />;
         }}
       </ValidatingInput>

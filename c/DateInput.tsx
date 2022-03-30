@@ -8,7 +8,7 @@ interface Props {
   setDt: Function;
 }
 
-const DateInput: React.FC = ({ dt, setDt }) => {
+const DateInput: React.FC<Props> = ({ dt, setDt }) => {
   return (
     <div>
       <button onClick={() => setDt(dt.minus({ year: 1 }))}>Year</button>
@@ -17,21 +17,29 @@ const DateInput: React.FC = ({ dt, setDt }) => {
       <button onClick={() => setDt(dt.minus({ hour: 1 }))}>Hour</button>
       <ValidatingInput
         value={dt}
-        setValue={(date) => {
+        setValue={(date: Date) => {
           const dt = DateTime.fromJSDate(date);
           setDt(dt);
         }}
-        parse={(val) => {
+        parse={(val: string) => {
           return chrono.parseDate(val);
         }}
-        format={(val) => {
+        format={(val: DateTime) => {
           console.log(DateTime.DATETIME_MED);
           return val.toLocaleString(DateTime.DATETIME_MED);
         }}
       >
-        {({ value, isError, onChange, onBlur }) => (
-          <input value={value} onChange={onChange} onBlur={onBlur} />
-        )}
+        {({
+          value,
+          isError,
+          onChange,
+          onBlur,
+        }: {
+          value: string;
+          isError: boolean;
+          onChange: React.ChangeEventHandler<HTMLInputElement>;
+          onBlur: React.ChangeEventHandler<HTMLInputElement>;
+        }) => <input value={value} onChange={onChange} onBlur={onBlur} />}
       </ValidatingInput>
       <button onClick={() => setDt(dt.plus({ hour: 1 }))}>Hour</button>
       <button onClick={() => setDt(dt.plus({ day: 1 }))}>Day</button>

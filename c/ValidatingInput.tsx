@@ -8,8 +8,9 @@ import React from "react";
   */
 
 interface Props {
-  children: Function;
+  children: (arg: any) => any;
   parse: Function;
+  format: Function;
   value: any;
   setValue: Function;
 }
@@ -41,7 +42,7 @@ const ValidatingInput: React.FC<Props> = ({
         setIsError(true);
       }
     },
-    [setValue, setIsError, parse]
+    [setIsError, parse]
   );
 
   const onBlur = React.useCallback(() => {
@@ -55,7 +56,7 @@ const ValidatingInput: React.FC<Props> = ({
     }
 
     setValue(parsed);
-  }, [parse, format, _value, setValue, _setValue]);
+  }, [parse, _value, setValue]);
 
   return children({ value: _value, isError, onChange, onBlur });
 };
