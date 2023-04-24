@@ -28,8 +28,7 @@ const DateInput: React.FC<Props> = ({ dt, setDt }) => {
           console.log(DateTime.DATETIME_MED);
           return val.toLocaleString(DateTime.DATETIME_MED);
         }}
-      >
-        {({
+        render={({
           value,
           isError,
           onChange,
@@ -40,7 +39,7 @@ const DateInput: React.FC<Props> = ({ dt, setDt }) => {
           onChange: React.ChangeEventHandler<HTMLInputElement>;
           onBlur: React.ChangeEventHandler<HTMLInputElement>;
         }) => <input value={value} onChange={onChange} onBlur={onBlur} />}
-      </ValidatingInput>
+      />
       <button onClick={() => setDt(dt.plus({ hour: 1 }))}>Hour</button>
       <button onClick={() => setDt(dt.plus({ day: 1 }))}>Day</button>
       <button onClick={() => setDt(dt.plus({ month: 1 }))}>Month</button>

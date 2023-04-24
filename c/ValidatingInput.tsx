@@ -1,27 +1,14 @@
 import React from "react";
 
-/*
-<ValidatingInput
-  parse={parseNumber} format={formatNumber}
-  value={number}    setValue={setNumber}
->{
-  */
-
 interface Props {
-  children: (arg: any) => any;
+  render: Function;
   parse: Function;
   format: Function;
   value: any;
   setValue: Function;
 }
 
-const ValidatingInput: React.FC<Props> = ({
-  parse,
-  format,
-  value,
-  setValue,
-  children,
-}) => {
+const ValidatingInput = ({ parse, format, value, setValue, render }: Props) => {
   const [_value, _setValue] = React.useState(value);
 
   React.useEffect(() => {
@@ -58,7 +45,7 @@ const ValidatingInput: React.FC<Props> = ({
     setValue(parsed);
   }, [parse, _value, setValue]);
 
-  return children({ value: _value, isError, onChange, onBlur });
+  return render({ value: _value, isError, onChange, onBlur });
 };
 
 export default ValidatingInput;

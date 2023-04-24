@@ -1,13 +1,6 @@
 import React from "react";
 import ValidatingInput from "~/c/ValidatingInput";
 
-/*
-<ValidatingInput
-  parse={parseNumber} format={formatNumber}
-  value={number}    setValue={setNumber}
->{
-  */
-
 const JsonEditor: React.FC = () => {
   const [json, setJson] = React.useState(null);
 
@@ -19,8 +12,7 @@ const JsonEditor: React.FC = () => {
         setValue={setJson}
         parse={JSON.parse}
         format={(j: any) => JSON.stringify(j, null, 2)}
-      >
-        {({
+        render={({
           value,
           isError,
           onChange,
@@ -33,7 +25,7 @@ const JsonEditor: React.FC = () => {
         }) => {
           return <textarea value={value} onChange={onChange} onBlur={onBlur} />;
         }}
-      </ValidatingInput>
+      />
     </div>
   );
 };
