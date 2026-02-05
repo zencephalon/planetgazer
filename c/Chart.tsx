@@ -4,12 +4,14 @@ import { DateTime } from "luxon";
 
 interface Props {
   dt: DateTime;
+  latitude: number;
+  longitude: number;
 }
 
-const CChart: React.FC<Props> = ({ dt }) => {
+const CChart: React.FC<Props> = ({ dt, latitude, longitude }) => {
   React.useEffect(() => {
-    chartDataFromDt(dt);
-  }, [dt]);
+    chartDataFromDt(dt, latitude, longitude);
+  }, [dt, latitude, longitude]);
 
   return (
     <div>
