@@ -1,27 +1,26 @@
 import React from "react";
 import Chart from "~/c/Chart";
 import DateInput from "~/c/DateInput";
-// import JsonEditor from "~/c/JsonEditor";
+import LocationInput from "~/c/LocationInput";
 
 import { DateTime } from "luxon";
 
-interface Location {
+export interface Location {
   latitude: number;
   longitude: number;
 }
 
 const DEFAULT_LOCATION: Location = {
-  latitude: 40.0,
-  longitude: -70.0,
+  latitude: 40.6782,
+  longitude: -73.9442,
 };
 
 const ControlledChart: React.FC = () => {
   const [dt, setDt] = React.useState(DateTime.now());
-  const [location, setLocation] = React.useState<Location | null>(null);
+  const [location, setLocation] = React.useState<Location>(DEFAULT_LOCATION);
 
   React.useEffect(() => {
     if (!navigator.geolocation) {
-      setLocation(DEFAULT_LOCATION);
       return;
     }
 
@@ -32,21 +31,19 @@ const ControlledChart: React.FC = () => {
           longitude: position.coords.longitude,
         });
       },
-      () => {
-        setLocation(DEFAULT_LOCATION);
-      },
+      () => {},
       { timeout: 5000 }
     );
   }, []);
 
-  if (!location) {
-    return <div>Requesting location access...</div>;
-  }
-
   return (
     <>
-      {/*<JsonEditor />*/}
       <DateInput dt={dt} setDt={setDt} />
+      <LocationInput
+        latitude={location.latitude}
+        longitude={location.longitude}
+        setLocation={setLocation}
+      />
       <Chart dt={dt} latitude={location.latitude} longitude={location.longitude} />
     </>
   );
