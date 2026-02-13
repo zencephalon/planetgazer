@@ -6,12 +6,15 @@ interface Props {
   dt: DateTime;
   latitude: number;
   longitude: number;
+  natalDt?: DateTime;
+  natalLatitude?: number;
+  natalLongitude?: number;
 }
 
-const CChart: React.FC<Props> = ({ dt, latitude, longitude }) => {
+const CChart: React.FC<Props> = ({ dt, latitude, longitude, natalDt, natalLatitude, natalLongitude }) => {
   React.useEffect(() => {
-    chartDataFromDt(dt, latitude, longitude);
-  }, [dt, latitude, longitude]);
+    chartDataFromDt(dt, latitude, longitude, natalDt, natalLatitude, natalLongitude);
+  }, [dt, latitude, longitude, natalDt, natalLatitude, natalLongitude]);
 
   return (
     <div>
