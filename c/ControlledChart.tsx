@@ -34,7 +34,8 @@ const ControlledChart: React.FC = () => {
       },
       () => {
         setLocation(DEFAULT_LOCATION);
-      }
+      },
+      { timeout: 5000 }
     );
   }, []);
 
