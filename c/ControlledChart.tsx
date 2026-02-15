@@ -43,40 +43,42 @@ const ControlledChart: React.FC = () => {
   }, []);
 
   return (
-    <>
-      <TabSelector mode={mode} setMode={setMode} />
-      <DateInput dt={dt} setDt={setDt} />
-      <LocationInput
-        latitude={location.latitude}
-        longitude={location.longitude}
-        setLocation={setLocation}
-      />
-      {mode === "transit" && (
-        <div style={{ marginTop: "8px", padding: "8px", border: "1px solid #ccc" }}>
-          <div style={{ marginBottom: "4px", fontSize: "0.9em", color: "#666" }}>
-            Birth data
+    <div className="chart-layout">
+      <div className="chart-area">
+        <Chart
+          dt={dt}
+          latitude={location.latitude}
+          longitude={location.longitude}
+          {...(mode === "transit"
+            ? {
+                natalDt,
+                natalLatitude: natalLocation.latitude,
+                natalLongitude: natalLocation.longitude,
+              }
+            : {})}
+        />
+      </div>
+      <div className="controls">
+        <TabSelector mode={mode} setMode={setMode} />
+        <DateInput dt={dt} setDt={setDt} />
+        <LocationInput
+          latitude={location.latitude}
+          longitude={location.longitude}
+          setLocation={setLocation}
+        />
+        {mode === "transit" && (
+          <div className="birth-data">
+            <div className="birth-data-label">Birth data</div>
+            <DateInput dt={natalDt} setDt={setNatalDt} />
+            <LocationInput
+              latitude={natalLocation.latitude}
+              longitude={natalLocation.longitude}
+              setLocation={setNatalLocation}
+            />
           </div>
-          <DateInput dt={natalDt} setDt={setNatalDt} />
-          <LocationInput
-            latitude={natalLocation.latitude}
-            longitude={natalLocation.longitude}
-            setLocation={setNatalLocation}
-          />
-        </div>
-      )}
-      <Chart
-        dt={dt}
-        latitude={location.latitude}
-        longitude={location.longitude}
-        {...(mode === "transit"
-          ? {
-              natalDt,
-              natalLatitude: natalLocation.latitude,
-              natalLongitude: natalLocation.longitude,
-            }
-          : {})}
-      />
-    </>
+        )}
+      </div>
+    </div>
   );
 };
 

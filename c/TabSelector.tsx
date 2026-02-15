@@ -9,22 +9,16 @@ interface Props {
 
 const TabSelector: React.FC<Props> = ({ mode, setMode }) => {
   return (
-    <div style={{ display: "flex", gap: "4px", marginBottom: "8px" }}>
+    <div className="tab-selector">
       <button
         onClick={() => setMode("chart")}
-        style={{
-          fontWeight: mode === "chart" ? "bold" : "normal",
-          textDecoration: mode === "chart" ? "underline" : "none",
-        }}
+        className={mode === "chart" ? "active" : ""}
       >
         Chart
       </button>
       <button
         onClick={() => setMode("transit")}
-        style={{
-          fontWeight: mode === "transit" ? "bold" : "normal",
-          textDecoration: mode === "transit" ? "underline" : "none",
-        }}
+        className={mode === "transit" ? "active" : ""}
       >
         Transits
       </button>

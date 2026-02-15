@@ -28,7 +28,7 @@ const formatCoord = (val: number) => val.toFixed(4);
 
 const LocationInput: React.FC<Props> = ({ latitude, longitude, setLocation }) => {
   return (
-    <div>
+    <div className="location-row">
       <label>
         Lat{" "}
         <ValidatingInput
@@ -51,14 +51,14 @@ const LocationInput: React.FC<Props> = ({ latitude, longitude, setLocation }) =>
               value={value}
               onChange={onChange}
               onBlur={onBlur}
-              style={isError ? { borderColor: "red" } : {}}
+              className={isError ? "error" : ""}
               size={10}
             />
           )}
         />
       </label>
       <label>
-        {" "}Lon{" "}
+        Lon{" "}
         <ValidatingInput
           value={longitude}
           setValue={(lon: number) => setLocation({ latitude, longitude: lon })}
@@ -79,7 +79,7 @@ const LocationInput: React.FC<Props> = ({ latitude, longitude, setLocation }) =>
               value={value}
               onChange={onChange}
               onBlur={onBlur}
-              style={isError ? { borderColor: "red" } : {}}
+              className={isError ? "error" : ""}
               size={10}
             />
           )}

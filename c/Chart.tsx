@@ -12,13 +12,28 @@ interface Props {
 }
 
 const CChart: React.FC<Props> = ({ dt, latitude, longitude, natalDt, natalLatitude, natalLongitude }) => {
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const [size, setSize] = React.useState(0);
+
   React.useEffect(() => {
-    chartDataFromDt(dt, latitude, longitude, natalDt, natalLatitude, natalLongitude);
-  }, [dt, latitude, longitude, natalDt, natalLatitude, natalLongitude]);
+    if (!containerRef.current) return;
+    const ro = new ResizeObserver((entries) => {
+      const width = Math.round(entries[0].contentRect.width);
+      setSize(width);
+    });
+    ro.observe(containerRef.current);
+    return () => ro.disconnect();
+  }, []);
+
+  React.useEffect(() => {
+    if (size > 0) {
+      chartDataFromDt(dt, latitude, longitude, natalDt, natalLatitude, natalLongitude);
+    }
+  }, [dt, latitude, longitude, natalDt, natalLatitude, natalLongitude, size]);
 
   return (
     <div>
-      <div id="chart"></div>
+      <div id="chart" ref={containerRef}></div>
     </div>
   );
 };
